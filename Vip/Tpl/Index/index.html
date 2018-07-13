@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/Css/common.css" />
+<script type="text/javascript" src="__PUBLIC__/Js/myfocus-1.0.4.min.js"></script><!--引入myFocus库-->
+<script type="text/javascript" src="__PUBLIC__/Js/jquery1.32.min.js"></script><!--引入Jquery库-->
+<script type="text/javascript" src="__PUBLIC__/Js/all.js"></script>
+<title>{$System_namex}</title>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" style="height:100%; width:1100px;" align="center">
+    <tr>
+    <td height="60" colspan="3">
+    <div id="header">
+    	
+    	
+    	<div id="logo"><!--<img src="__PUBLIC__/images/logo.png" />--></div>
+    	
+    	
+    <div class="user">欢迎你 <a href="./">{$fck_rs['user_id']}</a>
+    					    <a onclick="javascript:SetUrl('__APP__/Fck/inMessages/')"><img src="__PUBLIC__/images/ico_msg.gif" style="vertical-align:middle"/>({$info_count})</a>
+                            <a href="__APP__/Public/LogOut/" onClick="{if(confirm('确定安全退出吗?')){this.document.selform.submit();return true;}return false;}" target="_top">退出</a>
+    <!-- | <a href="#" onClick="window.close();return false;">关闭本窗口</a>-->
+</div>
+    </div>
+    
+    <div id="nav">
+    	<!--<div id="nihao" class="welcome">上次登陆时间：&nbsp;{$Think.session.lastLoginTime|date='Y-m-d H:i:s',###}</div>-->
+        <ul>
+        <!-- 导航菜单 -->
+        <li><a onclick="javascript:qiehuan(1);javascript:SetUrl('__APP__/Public/News');" id="mynav1" class="nav_on">首页</a><s></s></li>
+        <li><a onclick="javascript:qiehuan(2);" id="mynav2" class="nav_on">会员信息</a><s></s></li>
+        <li><a onclick="javascript:qiehuan(3);" id="mynav3" class="nav_on">财务管理</a><s></s></li>
+        <li><a onclick="javascript:qiehuan(4);" id="mynav4" class="nav_on">团队信息</a><s></s></li>
+        <li><a onclick="javascript:qiehuan(5);" id="mynav5" class="nav_on">公司公告</a><s></s></li>
+        <li><a onclick="javascript:qiehuan(6);" id="mynav6" class="nav_on">我要留言</a><s></s></li>
+		<li><egt name="fck_rs['is_boss']" value='1'><a onclick="javascript:qiehuan(7);" id="mynav7" class="nav_on">后台管理</a><s></s><else/><a id="mynav7" class="nav_on"></a></egt></li>
+       <!-- <li style=" color:#666">上次登陆时间：&nbsp;{$fck_rs.last_login_time|date='Y-m-d H:i:s',###}</li>-->
+		
+        </ul>
+       
+    </div>
+    </td>
+    </tr>
+    	
+    
+    <tr>
+    <td class="main_left" style="width:140px;height: auto;">
+    
+    <div class="menu2">
+    <ul>
+    <!--<li><span style="font-weight:bold">个人工资：</span>{$count[1]} </li>
+    <li><span style="font-weight:bold">服务补贴：</span>{$count[2]} </li>
+    <li><span style="font-weight:bold">推荐补贴：</span>{$count[3]} </li>-->
+    <li><span style="font-weight:bold">奖金总额：</span>{$fck_rs['zjj']} </li>
+    <li><span style="font-weight:bold">现金账户：</span>{$fck_rs['agent_use']} </li>
+   	<li><span style="font-weight:bold">电子账户：</span>{$fck_rs['agent_cash']} </li>
+    </ul>
+    </div>
+	<div class="l_top" id="qh_con1" ><h1>快速导航</h1>
+           <div class="menu"> 
+            <ul>
+            <li><a onclick="javascript:SetUrl('__APP__/Public/News')">首页资讯</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/users')">注册会员</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/9')">奖金明细</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/7')">提现申请</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/messages/')">写邮件</a></li>
+            </ul>
+            </div>
+    </div>
+    <div class="l_top" id="qh_con2" style="display:none;"><h1>会员信息</h1>
+           <div class="menu"> 
+            <ul>
+<!--            <li><a onclick="javascript:SetUrl('__APP__/Public/cody/c_id/3')">我的资料</a></li>-->
+            <li><a onclick="javascript:SetUrl('__APP__/Public/cody/c_id/2')">修改密码</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Public/cody/c_id/1')">修改资料</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/users')">注册会员</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/1')">开通会员</a></li>
+            <lt name="fck_rs['is_agent']" value='2'>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/4')">申请商务中心</a></li>
+            </lt>
+			<li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/18')">晋级申请</a></li>
+            </ul>
+            </div>
+    </div>
+    <div class="l_top" id="qh_con3" style="display:none;"><h1>财务管理</h1>
+        <div class="menu">
+            <ul>
+            <li><a onclick="javascript:SetUrl('__APP__/Public/cody/c_id/3')">账户查询</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/9')">奖金明细 </a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/6')">账户转账</a></li>
+            <!--<li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/17')">消费申请</a></li>-->
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/7')">提现申请</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/10')">充值申请</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--<div class="l_top" id="qh_con3" style="display:none;"><h1>PV管理</h1>
+        <div class="menu">
+            <ul>
+            
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/12')">业绩统计</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/11')">员工升级</a></li>
+            </ul>
+        </div>
+    </div>-->
+    <div class="l_top" id="qh_con4" style="display:none;"><h1>谱系图</h1>
+        <div class="menu">
+            <ul>
+            <li><a onclick="javascript:SetUrl('__APP__/Tree/cody/c_id/5')">结构图</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Tree/cody/c_id/6')">推荐图</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/cody/c_id/3')">查看直推表</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="l_top" id="qh_con5" style="display:none;"><h1>新闻公告</h1>
+        <div class="menu">
+            <ul>
+            <li><a onclick="javascript:SetUrl('__APP__/Public/News/')">查看公告</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Public/plan')">奖励计划</a></li>
+            </ul>
+        </div>
+    </div>
+ 	<div class="l_top" id="qh_con6" style="display:none;"><h1>留言管理</h1>
+        <div class="menu">
+            <ul>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/inMessages/')">接收邮件</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/outMessages/')">发送邮件</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/Fck/messages/')">写邮件</a></li>
+            </ul>
+        </div>
+    </div>
+
+	<egt name="fck_rs['is_boss']" value='1'>
+    <div class="l_top" id="qh_con7" style="display:none;"><h1>后台管理</h1>
+        <div class="menu">
+            <ul>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/5')">当期出纳</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/8')">奖金查询</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/1')">会员审核</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/2')">会员管理</a></li>
+			<!--<li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/24')">物流管理</a></li>-->
+			<!--<li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/26')">产品管理</a></li>-->
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/10')">服务中心管理</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/18')">货币流向</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/6')">提现管理</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/12')">充值管理</a></li>
+            <!--<li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/28')">重复消费清单</a></li>-->
+            <li><a onclick="javascript:SetUrl('__APP__/News/index/')">新闻公告管理</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/News/plan/')">奖励计划设置</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/7')">数据库备份</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/3')">参数设置</a></li>
+            <li><a onclick="javascript:SetUrl('__APP__/YouZi/cody/c_id/9')">清空数据</a></li>
+            </ul>
+        </div>
+    </div>
+    <else/>
+    <div class="l_top" id="qh_con7" style="display:none;"></div>
+	</egt>
+    <!--<div class="l_top" id="qh_con6" style="display:none;"><h1>关于我们</h1>
+        <div class="menu">
+            <ul>
+            <li><a onclick="javascript:SetUrl('__APP__/Public/planTwo')">关于我们</a></li>
+            </ul>
+        </div>
+    </div>-->
+    </td>
+    <td valign="top" style="width:99%;height:expression(this.clientHeight);">
+    <iframe id="main" style="z-index: 1; width:99%" name="main" src="__APP__/Public/News/" frameborder="0" scrolling="auto" onload="turnHeight('main');" target="self" allowtransparency="true"></iframe>
+    </td>
+    </tr>
+    <tr>
+<td height="25" colspan="2">
+<div id="foot">copyright @ 2013-2015</div>
+</td></tr>
+</table>
+<table>
+</body>
+</html>
+<script language="javascript">
+	function SetUrl(url)
+	{
+		window.parent.main.location.href = url;
+	}
+	function qiehuan(num){
+		for(var id = 1;id<=7;id++)
+		{
+			if(id==num)
+			{
+				document.getElementById("qh_con"+id).style.display="block";
+				document.getElementById("mynav"+id).className="nav_on";
+			}
+			else
+			{
+				document.getElementById("qh_con"+id).style.display="none";
+				document.getElementById("mynav"+id).className="nav_off";
+			}
+		}
+	}
+	function SetCwinHeight(iframename){
+		var cwin=iframename;
+		if (document.getElementById)
+		{
+			if (cwin && !window.opera)
+			{
+				var helt = document.body.clientHeight-120;
+				cwin.height = helt;
+			}
+		}
+	}
+	function settime()
+		{
+		var myyear,mymonth,myweek,myday,mytime,mymin,myhour,mysec;
+		function initArray(){
+			this.length=initArray.arguments.length;
+			for(var i=0;i<this.length;i++){
+				this[i+1]=initArray.arguments[i];
+			}
+		}
+		var d=new initArray(" 星期日"," 星期一"," 星期二"," 星期三"," 星期四"," 星期五"," 星期六");
+	    var mydate=new Date();
+		myyear=mydate.getFullYear();
+		mymonth=mydate.getMonth()+1;
+		myday=mydate.getDate();
+		myhour=mydate.getHours();
+		mymin=mydate.getMinutes();
+		mysec=mydate.getSeconds();
+		mytime = d[mydate.getDay()+1] + " " + myyear+"-"+mymonth+"-"+myday+" "+myhour+":"+mymin+":"+mysec;
+		if(mytime.length<25){
+			for(var i=mytime.length;i<=25;i++){
+				mytime += "&nbsp;";
+			}
+		}
+		document.getElementById("nihao").innerHTML = "今天是：" + mytime;
+		setTimeout('settime()',1000);
+	} 
+	settime();
+	qiehuan(1);
+</script> 
+<script language="javascript">
+function turnHeight(iframe)
+{
+    var frm = document.getElementById(iframe);
+	frm.height = 600;
+    var subWeb = document.frames ? document.frames[iframe].document : frm.contentDocument;
+    if(frm != null && subWeb != null)
+    {
+	if (subWeb.body.scrollHeight<600){
+	frm.height = 600;
+	}else{
+	frm.height = subWeb.body.scrollHeight + 20;
+	}
+	}
+}
+</script>

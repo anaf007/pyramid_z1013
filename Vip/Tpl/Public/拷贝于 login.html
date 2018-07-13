@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$System_namex}</title>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Base.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/prototype.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/mootools.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/common.js\"></sc"+"ript>")</script>
+<link href="__PUBLIC__/css/login3.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.case {display: block; width:600px;  overflow: hidden}
+.MyMarqueeX {  overflow: hidden; margin: 0 auto 0 auto; width:100%; height:60px;}
+.MyMarqueeX img { margin-left:80px;}
+</style>
+<script language="javascript" type="text/javascript">
+//<!--
+// 附带函数
+var
+// 用ID获取元素
+
+// 生成随机数
+RandStr = function(n, u){
+	var tmStr = "abcdefghijklmnopqrstuvwxyz0123456789";
+	var Len = tmStr.length;
+	var Str = "";
+	for(i=1;i<n+1;i++){
+		Str += tmStr.charAt(Math.random()*Len);
+	}
+	return (u ? Str.toUpperCase() : Str);
+};
+//-->
+</script>
+<script language="javascript" type="text/javascript">
+//<!--
+
+var MyMarquees = new Array();
+// 获取检测实例名
+function getMyMQName(mName) {
+	var name = mName==undefined ? RandStr(5) : mName;
+	var myNames = ','+ MyMarquees.join(',') +',';
+
+	while(myNames.indexOf(','+ name +',')!=-1) {
+		name = RandStr(5);
+	}
+	return name;
+}
+function Marquee(inits) {
+	var _o = this;
+	var _i = inits;
+
+	if(_i.obj==undefined) return;
+	_o.mode   	= _i.mode==undefined ? 'x' : _i.mode;			// 滚动模式(x:横向, y:纵向)
+	_o.mName	= getMyMQName(_i.name);							// 实例名
+	_o.mObj		= $(_i.obj);									// 滚动对象
+	_o.speed	= _i.speed==undefined ? 20 : _i.speed;			// 滚动速度
+	_o.autoStart= _i.autoStart==undefined ? true : _i.autoStart;// 自动开始
+	_o.movePause= _i.movePause==undefined ? true : _i.movePause;// 鼠标经过是否暂停
+
+	_o.mDo		= null;											// 计时器
+	_o.pause	= false;										// 暂停状态
+
+	// 无间滚动初始化
+	_o.init = function() {
+		if((_o.mObj.scrollWidth<=_o.mObj.offsetWidth && _o.mode=='x') || (_o.mObj.scrollHeight<=_o.mObj.offsetHeight && _o.mode=='y')) return;
+
+		MyMarquees.push(_o.mName);
+
+		// 克隆滚动内容
+		_o.mObj.innerHTML = _o.mode=='x' ? (
+			'<table width="100%" border="0" align="left" cellpadding="0" cellspace="0">'+
+			'	<tr>'+
+			'		<td id="MYMQ_'+ _o.mName +'_1">'+ _o.mObj.innerHTML +'</td>'+
+			'		<td id="MYMQ_'+ _o.mName +'_2">'+ _o.mObj.innerHTML +'</td>'+
+			'	</tr>'+
+			'</table>'
+		) : (
+			'<div id="MYMQ_'+ _o.mName +'_1">'+ _o.mObj.innerHTML +'</div>'+
+			'<div id="MYMQ_'+ _o.mName +'_2">'+ _o.mObj.innerHTML +'</div>'
+		);
+
+		// 获取对象、高宽
+		_o.mObj1 = $('MYMQ_'+ _o.mName +'_1');
+		_o.mObj2 = $('MYMQ_'+ _o.mName +'_2');
+		_o.mo1Width = _o.mObj1.scrollWidth;
+		_o.mo1Height = _o.mObj1.scrollHeight;
+
+		// 初始滚动
+		if(_o.autoStart) _o.start();
+	};
+
+	// 开始滚动
+	_o.start = function() {
+		_o.mDo = setInterval((_o.mode=='x' ? _o.moveX : _o.moveY), _o.speed);
+		if(_o.movePause) {
+			_o.mObj.onmouseover = function() {_o.pause = true;}
+			_o.mObj.onmouseout = function() {_o.pause = false;}
+		}
+	}
+
+	// 停止滚动
+	_o.stop = function() {
+		clearInterval(_o.mDo)
+		_o.mObj.onmouseover = function() {}
+		_o.mObj.onmouseout = function() {}
+	}
+
+	// 水平滚动
+	_o.moveX = function() {
+		if(_o.pause) return;
+		var left = _o.mObj.scrollLeft;
+		if(left==_o.mo1Width){
+			_o.mObj.scrollLeft = 0 ;
+		}else if(left>_o.mo1Width) {
+			_o.mObj.scrollLeft = left-_o.mo1Width;
+		}else{
+			_o.mObj.scrollLeft++;
+		}
+	};
+	_o.init();
+}
+//-->
+</script>
+<!--[if IE 6]>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/js/iepng.js\"></sc"+"ript>")</script>
+<script type="text/javascript">
+  EvPNG.fix('div, ul, img, li, input,a,img,p');
+</script><!--解决IE6不透明问题--> 
+<![endif]-->  
+
+</head>
+
+<body>
+<form method='post' name="login" id="form1"  >
+<div id="box">
+
+<div id="Content">
+ <div class="Content1">
+<div class="result"><div id="result"></div></div>
+   <div class="Content1_2">
+     <p><!-- 用户名： -->
+       <input  name="account" class="ipt" type="text" id="account" />
+       </p>
+     <p><!-- 密　码： -->
+       <input type="password" class="ipt" name="password" id="password"  />
+     </p>
+          <p><!-- 验证码： -->
+       <input style="width:80px;" class="ipt" name="verify" type="text" onKeyDown="keydown(event)" check="Require" warning="请输入验证码" title="点击图片可刷新验证码"/><input type="hidden" name="ajax" value="1">
+          <img style="vertical-align:middle;" src="__URL__/verify/" width="60" height="20" id="verifyImg" onClick="fleshVerify()" border="0" alt="点击刷新验证码" style="cursor:pointer" align="absmiddle"/>
+                       </div>
+   <div class="Content1_3">
+   <!--<input type="button"  name="button" value=" 登錄 "  onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')"/>-->
+   <input style="margin-right:40px;" type="button"  onmouseover="this.className='btn_1';" onmouseout="this.className='btn_0';" class="btn_0"
+  name="button"   onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')"/>
+     <!--<input type="button"  name="button" value=" 取消 "  onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')"/>-->
+   <input style="margin-left:20px;" type="reset"  onmouseover="this.className='btn_3';" onmouseout="this.className='btn_4';" class="btn_4"
+  name="button" value="" />
+   </div>
+ </div>
+</div>
+<div id="footer"></div>
+</div>
+</form>
+</body>
+</html>
+<script language="javascript" type="text/javascript">
+//<!--
+new Marquee({
+	obj : 'MyMarqueeX',
+	movePause : true
+});
+//-->
+</script>
+<script language="JavaScript">
+<!--//
+var PUBLIC	 =	 '__PUBLIC__';
+ThinkAjax.image = [	 '__PUBLIC__/Images/loading2.gif', '__PUBLIC__/Images/ok.gif','__PUBLIC__/Images/update.gif' ]
+ThinkAjax.updateTip	=	'登录中～';
+function loginHandle(data,status){
+if (status==1)
+{
+$('result').innerHTML	=	'<span style="color:blue"><img SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+$('form1').reset();
+window.location = '__URL__';
+}
+}
+function keydown(e){
+	var e = e || event;
+	if (e.keyCode==13)
+	{
+	ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+	}
+}
+function fleshVerify(type){
+//重载验证码
+var timenow = new Date().getTime();
+if (type)
+{
+$('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+}else{
+$('verifyImg').src= '__URL__/verify/'+timenow;
+}
+}
+//-->
+</script>
+

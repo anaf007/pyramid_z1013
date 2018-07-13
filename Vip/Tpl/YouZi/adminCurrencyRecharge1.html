@@ -1,0 +1,65 @@
+<include file="../Public/header" />
+<div id="main_top"><font>鎮ㄧ幇鍦ㄧ殑浣嶇疆鏄細</font> 鍏呭�肩鐞�</div>
+<div class="sub_bav">
+<form name="form3" method="post" action="__URL__/adminCurrencyRechargeAC">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+
+    <thead>
+        <tr class="content_td" align="center">
+            <th nowrap >
+              <div align="center">
+                <input type="checkbox" name="chkall" value="checkbox" onclick="CheckAll(this.form)"  class="btn2" id="chkall" />
+              </div></th>
+            <th nowrap ><span>浼氬憳缂栧彿</span></th>
+            <th><span>璐拱鎶ュ崟甯佹暟閲�</span></th>
+			<th><span>璐拱鏃堕棿</span></th>
+            <th><span>姹囨鏁伴</span></th>
+            <th><span>姹囧埌璐﹀彿</span></th>
+            <th nowrap ><span>鐘舵��</span></th>
+        </tr>
+    </thead>
+<volist name="list" id="vo">
+<tr class="content_td" align="center">
+	<td><div align="center">
+	  <input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" />
+	</div></td>
+	<td>{$vo['user_id']}</td>
+	<td><span class="STYLE1">{$vo['epoint']}</span></td>
+	<td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+    <td>{$vo['huikuan']}</td>
+        <td>{$vo['zhuanghao']}</td>
+	<td><eq name="vo['is_pay']" value="1">宸茬‘璁�</eq><eq name="vo['is_pay']" value="0"><span style="color: #FF3300;">鏈‘璁�</span></eq></td>
+</tr>
+</volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+    <tr>
+    	<td width="50%">
+<input name="鍏ㄩ��" type="button" class="btn1" id="鍏ㄩ��" onclick="CheckAll(this.form)" value="鍏ㄩ��" />	  &nbsp; &nbsp;
+	  <input type="submit" name="action" value="纭" class="btn1" onclick="{if(confirm('纭畾鍚�?')){return true;}return false;}">
+	  &nbsp; &nbsp;
+	  <input type="submit" name="action" value="鍒犻櫎" class="btn1" onclick="{if(confirm('纭畾鍒犻櫎鍚�?')){return true;}return false;}"></td>
+        </td>
+        <td width="50%">{$page}</td>
+    </tr>
+</table>
+</form>
+
+<table width="600" align="center">
+	<tr >
+  		<td colspan="5" class="tabletd">
+
+		<form method='post' action="__URL__/adminCurrencyRecharge">
+		<div class="fLeft"><span id="key">浼氬憳缂栧彿锛�
+		    <input name="UserID" type="text"id="UserID" title="甯愬彿鏌ヨ" maxlength="200" ></span>
+		  <input type="submit" name="Submit" value="鎼� 绱�" class="btn1"/>
+		</div>
+		<div  id="searchM" class=" none search cBoth" >		</div>
+		</form>  </td>
+	</tr>
+</table>
+
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

@@ -1,0 +1,196 @@
+<include file="../Public/header" />
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/jquery-1.7.2.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/jquery.kinMaxShow-1.0.min.js\"></sc"+"ript>")</script>
+<script type="text/javascript">  
+        $(document).ready(function () {  
+            var _speed = 40;  
+            var _dir = "left";  
+            var _slide = $("#slide");  
+            var _slide_width = $(_slide).width();  
+            var _slide_ul_width = $("#slide_ul").width($("#items li").width() * $("#items li").length).width();   
+  
+            function Marquee() {  
+                switch (_dir) {  
+                    case "left":  
+                        if (_slide.scrollLeft() + _slide_width >= _slide_ul_width)  
+                        //_slide.scrollLeft(0);  
+                            _dir = "right";  
+                        else {  
+                            _slide.scrollLeft(_slide.scrollLeft() + 1);  
+                        }  
+                        break;  
+                    case "right":  
+                        if (_slide.scrollLeft() == 0)  
+                        //_slide.scrollLeft(_slide_ul_width-_slide_width);  
+                            _dir = "left";  
+                        else {  
+                            _slide.scrollLeft(_slide.scrollLeft() - 1);  
+                        }  
+                        break;  
+                }  
+            }  
+  
+            var sliding = setInterval(Marquee, _speed);  
+  
+            $(".logo_item span").hover(function () {  
+                clearInterval(sliding);  
+            }, function () {  
+                sliding = setInterval(Marquee, _speed);  
+            });  
+  
+            $("#left_btn").click(function () {  
+                _dir = "left";  
+            });  
+            $("#right_btn").click(function () {  
+                _dir = "right";  
+            });  
+        });  
+    </script>
+<div style="width:100%; line-height:10px; text-indent: 5px; height:10px; "></div>
+<!-- 				left -->
+<div id="dianmiss">
+<div id="left_layout">
+<div class="notice">
+	<div class="titles icon_user ">用户中心</div>
+		<div class="contents" style="width:215px; height:200px">
+			<div id="user-manage">
+				  <table height="200" width="100%" cellpadding="0" cellspacing="0">
+				    <tr>
+				      <td width="70" align="right">欢迎您：</td>
+				      <td width="110" class="red">{$fck_rs['user_id']}</td>
+					</tr>
+				    <tr>
+				      <td align="right">会员级别：</td>
+				      <td class="red">{$u_level}</td>
+					</tr>
+				    <tr>
+				      <td align="right">现金账户：</td>
+				      <td class="red">{$fck_rs['agent_use']}</td>
+					</tr>
+                    <tr>
+				      <td align="right">电子账户：</td>
+				      <td class="red">{$fck_rs['agent_cash']}</td>
+					</tr>
+				    <tr>
+				        <td align="right">未读邮件：</td>
+				        <td><U class="red">{$info_count}</U> 条 &nbsp;&nbsp;<a href="__APP__/Fck/inMessages/">查看&gt;&gt;</a></td>
+					</tr>
+				  </table>
+				</div>
+			</div>
+            <div class="titles icon_user " style="margin-top:10px;">商务中心客服</div>
+			<div class="contents" style="width:215px; height:195px;">
+			<div id="user-manage">
+				  <table height="100" width="100%" cellpadding="0" cellspacing="0">
+				    <tr>
+				      <td>
+                      <li><span style="padding-right:10px;">客服QQ：</span><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=2603969861&Site=nnxinli.com&Menu=yes"><img border='0' SRC="http://wpa.qq.com/pa?p=1:2603969861:1" alt='在线客服' align="absmiddle" style="margin:5px 0px;"></a></li>
+                      <li><span style="padding-right:10px;">客服QQ：</span><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=1922410117&Site=nnxinli.com&Menu=yes"><img border='0' SRC="http://wpa.qq.com/pa?p=1:1922410117:1" alt='在线客服' align="absmiddle" style="margin:5px 0px;"></a></li>
+                      <li><span style="padding-right:10px;">客服QQ：</span><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=2053586727&Site=nnxinli.com&Menu=yes"><img border='0' SRC="http://wpa.qq.com/pa?p=1:2053586727:1" alt='在线客服' align="absmiddle" style="margin:5px 0px;"></a></li>
+                      <li><span style="padding-right:10px;">客服QQ：</span><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=2047702098&Site=nnxinli.com&Menu=yes"><img border='0' SRC="http://wpa.qq.com/pa?p=1:2047702098:1" alt='在线客服' align="absmiddle" style="margin:5px 0px;"></a></li>
+                      <li><span style="padding-right:10px;">客服QQ：</span><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=123123&Site=nnxinli.com&Menu=yes"><img border='0' SRC="http://wpa.qq.com/pa?p=1:123123:1" alt='在线客服' align="absmiddle" style="margin:5px 0px;"></a></li>
+                      <li><span style="padding-right:10px;">客服QQ：</span><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=123123&Site=nnxinli.com&Menu=yes"><img border='0' SRC="http://wpa.qq.com/pa?p=1:123123:1" alt='在线客服' align="absmiddle" style="margin:5px 0px;"></a></li>
+                      </td>
+                    </tr>
+				  </table>
+				</div>
+			</div>
+	</div>
+</div>
+				<div id="right_layout">
+                <div class="notice">
+             <div class="ainizhuzhu">
+    <div>
+<script type="text/javascript"> 
+var swf_width=700
+var swf_height=237
+var files='{$all_img}';
+var links='';
+var texts='';
+ 
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase=" http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ swf_width +'" height="'+ swf_height +'">');
+document.write('<param name="movie" value="__PUBLIC__/Swf/bcastr.swf"><param name="quality" value="high">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'">');
+document.write('<embed src="__PUBLIC__/Swf/bcastr.swf" wmode="opaque" FlashVars="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'& menu="false" quality="high" width="'+ swf_width +'" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage=" http://www.macromedia.com/go/getflashplayer" />'); document.write('</object>'); 
+//-->
+</script>
+</div>
+             
+             </div>
+	 
+	</div>
+<div class="clear"></div>
+	   <!--最新资讯-->
+    <div class="p_news">
+      <div class="holdline">
+        <div class="ptl"><span>最新资讯</span><a href="__APP__/Public/News/">更多</a></div>
+        
+        <div class="new_news">
+          <ul class=" top_news">
+            <li class="tnimg"><a href="__URL__/News_show/NewID/{$fn_list.id}"><img src="__PUBLIC__/Images/left_mad01.jpg" width="215" height="86"/></a></li>
+            <li class="tntl"><a href="__URL__/News_show/NewID/{$fn_list.id}">{$fn_list['title']|mysubstr='16'}</a></li>
+            <li class="tncon"><a href="__URL__/News_show/NewID/{$fn_list.id}">{$fn_list['content']|noHTML|mysubstr='50'}</a></li>
+          </ul>
+        </div>
+        <div class="line_jg"></div>
+        <div class="new_news">
+          <ul class="dalely_n" style="height: 222px;">
+            <volist name="n_list" id="vo">
+            <li><a href="__URL__/News_show/NewID/{$vo.id}" style="color:#FF0000">{$vo['title']|mysubstr='16'}</a></li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+          <!--会员提现-->
+    <div class="p_tixian">
+      <div class="holdline_1" style=" width:215px;">
+        <div class="ptl"><span>会员信息</span></div>
+        
+        <!--虽然是空的 但是不要删 删了提现无法滚动 我也不知道为什么-->
+        <div class="idx_dzw" id="jxy_ul_gaming"></div>
+        <!--结束-->
+        <ul class="idx_dzw" id="jxy_ul_reward" style="height:50px; overflow:hidden;">
+        <li><span class="usename">个人投资</span><span class="cash">{$all_n} 份</span></li>
+        <li><span class="usename">投资总额</span><span class="cash">{$all_m}</span></li>
+        </ul>
+        <div class="tixiantl"><span class="usename">下属信息</span><span class="cash">数量</span></div>
+        <ul class="idx_dzw" id="jxy_ul_reward" style="height:160px; overflow:hidden;">
+          <li><span class="usename">推荐人数</span><span class="cash">{$fck_rs['re_nums']} 人</span></li>
+          <li><span class="usename">推荐单数</span><span class="cash">{$t_dd} 单</span></li>
+          <li><span class="usename">团队人数</span><span class="cash">{$c_nn} 人</span></li>
+          <li><span class="usename">团队单数</span><span class="cash">{$c_dd} 单</span></li>
+        </ul>
+      </div>
+
+    </div>
+    <!--会员提现 结束-->
+    </div>
+    <!--最新资讯 结束-->
+ 
+				</div>
+                </div>
+                  <!--热门奖励-->
+  <div class="p_jp_2">
+    <div class="holdline_2">
+      <div class="ptl"><span>购物商城</span><a href="__APP__/Gouwu/Buycp/">更多</a></div>
+       <div id="company_logo" class="clearfix">  
+      <div id="slide">
+      <ul id="slide_ul">
+      <li>
+      <ul class="pdlist" id="items">
+        <volist name="c_list" id="vo">
+        <li class="logo_item"><span class="pdimg"><a href="__APP__/Gouwu/Cpcontent/id/{$vo.id}"><img src="{$vo.img}" width="100" height="100" /></a></span><span class="pdtx"><a href="__APP__/Gouwu/Cpcontent/id/{$vo.id}">{$vo.name}</a></span></li>
+        </volist>
+      </ul>
+      </li>
+      </ul>
+      </div>
+      </div>
+      
+      
+    
+    </div>
+  </div>
+  <!--热门奖励 结束-->
+</body></html>

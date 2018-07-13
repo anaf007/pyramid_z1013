@@ -1,0 +1,81 @@
+<include file="../Public/header" />
+<load href="__PUBLIC__/Js/Ajax/ThinkAjax-1.js" />
+<load href="__PUBLIC__/Js/UserJs.js" />
+<script language='javascript'>
+function CheckForm(){
+	if(confirm('您确定要兑换吗？'))
+	{
+		return true;
+	}else{
+		return false;
+    }
+}
+</script>
+<div class="ncenter_box">
+<div class="accounttitle"><h1>重复消费兑换 </h1></div>
+  <table width="100%" border="0" cellpadding="5" cellspacing="10" class="">
+    <form name="form1" method="post" action="__URL__/frontxiaofeiAC" onSubmit="{return CheckForm();}">
+      <tr>
+        <td width="25%">&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="right">重复消费：</td>
+        <td><span class="hong">{$rs['agent_cf']}</span></td>
+      </tr>
+      <tr>
+        <td align="right">{$User_namex}：</td>
+        <td><input name="UserID" type="text" id="UserID" style="background-color:#ddd;" value="{$rs['user_id']}" size="20" maxlength="20" readonly="readonly"/></td>
+      </tr>
+      <tr>
+        <td align="right"> 兑换产品：</td>
+        <td><input name="ePoints" type="radio" value="{$fee_rs['s11']}" checked="checked"/> <span class="hong">{$fee_rs['s11']}</span> 产品</td>
+      </tr>
+      <tr>
+        <td align="right"> 收件地址：</td>
+        <td><input name="dz" type="text" id="dz" value="" size="50" maxlength="100"/></td>
+      </tr>
+      <tr>
+        <td align="right"> 姓名：</td>
+        <td><input name="xm" type="text" id="xm" value="" size="20" maxlength="100"/></td>
+      </tr>
+      <tr>
+        <td align="right"> 电话号码：</td>
+        <td><input name="dh" type="text" id="dh" value="" size="20" maxlength="100"/></td>
+      </tr>
+      <tr>
+        <td align="right">&nbsp;</td>
+        <td><input type="submit" name="Submit" value="确定" class="button_text" /></td>
+        </tr>
+    </form>
+  </table><br />
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+		<tr>
+			<th><span>{$User_namex}</span></th>
+			<th><span>兑换金额</span></th>
+			<th><span>收件地址</span></th>
+			<th><span>姓名</span></th>
+			<th><span>电话号码</span></th>
+			<th><span>投资时间</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+		<td>{$rs['user_id']}</td>
+        <td>{$vo['money']}</td>
+        <td>{$vo['bank_name']}</td>
+        <td>{$vo['user_name']}</td>
+        <td>{$vo['bank_card']}</td>
+        <td>{$vo.rdt|date='Y-m-d H:i:s',###}</td>
+      </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1">
+<tr>
+        <td align="center">{$page}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type=text/javascript src="__PUBLIC__/Js/nav.js"></script>
+<link href="__PUBLIC__/Css/css2.css" type="text/css" rel="stylesheet" />
+<style type="text/css">
+
+.STYLE1 {font-size: 12px; line-height:18px;}
+html,body { border-right:3px solid #E4E4E4;}
+html { height:100%;}
+html { overflow-x: hidden; overflow-y: auto; }
+.accordion_headings{ padding:2px; font-size:12px; font-weight:bold; cursor:pointer; height:32px; line-height:25px; letter-spacing: 1px; background:url(__PUBLIC__/Images/bav.gif) no-repeat; padding-left:10px;}
+
+.accordion_child ul{ width:140px; margin-bottom:10px;}
+.accordion_child li{ border-bottom:1px dashed #0a509e; padding-left:30px; line-height:24px; background:url(__PUBLIC__/Images/left_li.gif) 12px 8px no-repeat;; }
+.accordion_child li a { color:#000; font-size:12px;}
+.accordion_child li a:hover { color:#06F; font-size:12px;}
+.accordion_child li a:active { color:blue; font-size:12px;}
+.accordion_headings:hover{color:#fffaac; background:url(__PUBLIC__/Images/bav_1.gif) no-repeat;}
+.header_highlight{background:url(__PUBLIC__/Images/bav_1.gif) no-repeat; color:#F60;}
+
+</style>
+</head>
+<body onload="new Accordian('basic-accordian',5,'header_highlight');">
+<div class="left_bav">
+<div class="left_top STYLE1">
+<span>会员信息：<br /></span>
+<span><br /></span>
+会员编号：{$fck_rs['user_id']}<br />
+奖金总额：{$fck_rs['zjj']}<br />
+现金账户：{$fck_rs['agent_use']}<br />
+电子账户：{$fck_rs['agent_cash']}<br />
+重复消费：{$fck_rs['agent_cf']}<br />
+<img src="__PUBLIC__/Images/laba.gif" alt="" align="absmiddle" />未读：<a href="__APP__/Fck/inMessages/" target="main">{$info_count}</a> 条<br />
+</div>
+
+<div id="basic-accordian" ><!--菜单开始-->
+
+    <div id="test1-header" class="accordion_headings" ><h6>&nbsp;&nbsp;&nbsp;&nbsp;</h6>&nbsp;会员管理</div>
+    <div id="test1-content">
+    <div class="accordion_child">
+    <ul>
+    <li><a href="__APP__/Public/cody/c_id/1" target="main">修改资料</a></li>
+    <li><a href="__APP__/Public/cody/c_id/2" target="main">修改密码</a></li>
+    <li><a href="__APP__/Fck/users" target="main">注册会员</a></li>
+    <li><a href="__APP__/Fck/cody/c_id/1" target="main">开通会员</a></li>
+    <gt name="fck_rs['u_level']" value='1'>
+    <lt name="fck_rs['is_agent']" value='2'>
+        <li><a href="__APP__/Fck/cody/c_id/4" target="main">申请报单中心</a></li>
+    </lt>
+    </gt>
+    <!--<li><a href="__APP__/Fck/cody/c_id/16" target="main">晋级申请</a></li>-->
+    </ul>
+    </div></div>
+ 
+    <div id="test2-header" class="accordion_headings" ><h6>&nbsp;&nbsp;&nbsp;&nbsp;</h6>&nbsp;财务管理</div>
+    <div id="test2-content">
+    <div class="accordion_child">
+    <ul>
+    <li><a href="__APP__/Public/cody/c_id/3" target="main">账户查询</a></li>
+    <li><a href="__APP__/Fck/cody/c_id/9" target="main">奖金明细</a></li>
+    <li><a href="__APP__/Fck/cody/c_id/6" target="main">账户转账</a></li>
+    <li><a href="__APP__/Fck/cody/c_id/7" target="main">货币提现</a></li>
+    <li><a href="__APP__/Fck/cody/c_id/10" target="main">充值申请</a></li>
+    <!--<li><a href="__APP__/Gouwu/cody/c_id/3/" target="main">重复消费</a></li>
+	<li><a href="__APP__/Gouwu/cody/c_id/4/" target="main">购货管理</a></li>-->
+    </ul>
+    </div></div>
+
+    <div id="test3-header" class="accordion_headings" ><h6>&nbsp;&nbsp;&nbsp;&nbsp;</h6>&nbsp;市场数据</div>
+    <div id="test3-content">
+    <div class="accordion_child">
+    <ul>
+
+    <if condition="($fee_i4 eq 1) AND ($fck_rs['id'] gt 1)">
+    <else/>
+    <li><a href="__APP__/Tree/cody/c_id/5" target="main">系统架构图</a></li>
+    <li><a href="__APP__/Tree/cody/c_id/6" target="main">推荐关系图</a></li>
+    </if>
+    <li><a href="__APP__/Fck/cody/c_id/3" target="main">查看推荐关系</a></li>
+    </ul>
+    </div></div>
+
+    <div id="test-header" class="accordion_headings" ><h6>&nbsp;&nbsp;&nbsp;&nbsp;</h6>&nbsp;信息交流</div>
+    <div id="test-content">
+    <div class="accordion_child">
+    <ul>
+    <li><a href="__APP__/Public/News/" target="main">查看公告</a></li>
+    <li><a href="__APP__/Public/plan/" target="main">奖励计划</a></li>
+    <!--<li><a href="__APP__/Public/planTwo/" target="main">问题解答</a></li>-->
+    <!--<li><a href="__APP__/Public/planThree/" target="main">励志名言</a></li>-->
+    <!--<li><a href="__APP__/Public/video/" target="main">视频栏目</a></li>-->
+    <li><a href="__APP__/Fck/inMessages/" target="main">接收邮件</a></li>
+    <li><a href="__APP__/Fck/outMessages/" target="main">发送邮件</a></li>
+    <li><a href="__APP__/Fck/messages/" target="main">写邮件</a></li>
+    </ul>
+    </div>
+    </div>
+    
+    <div id="test5-header" class="accordion_headings" ><h6>&nbsp;&nbsp;&nbsp;&nbsp;</h6>&nbsp;投资理财</div>
+    <div id="test5-content">
+    <div class="accordion_child">
+    <ul>
+    <li><a href="__APP__/Fck/cody/c_id/17" target="main">投资理财</a></li>
+    <!--<li><a href="__APP__/Fck/tzlc/" target="main">投资理财</a></li>-->
+    <!--<li><a href="__APP__/Myzis/cody/c_id/1" target="main">投资理财</a></li>-->
+    <!--<li><a href="__APP__/Myzis/cody/c_id/2" target="main">投资明细表</a></li>-->
+    <egt name="fck_rs['is_boss']" value='1'>
+    <!--<li><a href="__APP__/Myzis/cody/c_id/3" target="main">投资统计</a></li>-->
+    </egt>
+    </ul>
+    </div>
+    </div>
+
+    <egt name="fck_rs['is_boss']" value='1'>
+    <div id="test4-header" class="accordion_headings" ><h6>&nbsp;&nbsp;&nbsp;&nbsp;</h6>&nbsp;后台管理</div>
+    <div id="test4-content">
+    <div class="accordion_child">
+    <ul>
+        <li><a href="__APP__/YouZi/cody/c_id/5" target="main">当期出纳</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/8" target="main">奖金查询</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/1" target="main">会员审核</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/2" target="main">会员管理</a></li>
+        <!--<li><a href="__APP__/YouZi/cody/c_id/21" target="main">晋级管理</a></li>-->
+        <!--<li><a href="__APP__/YouZi/cody/c_id/26" target="main">产品管理</a></li>-->
+        <!--<li><a href="__APP__/YouZi/cody/c_id/24" target="main">物流管理</a></li>-->
+        <li><a href="__APP__/YouZi/cody/c_id/10" target="main">服务中心管理</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/11" target="main">结算分红</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/18" target="main">货币流向</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/6" target="main">提现管理</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/12" target="main">充值管理</a></li>
+        <!--<li><a href="__APP__/YouZi/cody/c_id/28" target="main">重复消费清单</a></li>-->
+        <li><a href="__APP__/News/index/" target="main">新闻公告管理</a></li>
+        <li><a href="__APP__/News/plan/" target="main">奖励计划设置</a></li>
+        <!--<li><a href="__APP__/News/planTwo/" target="main">问题解答设置</a></li>-->
+        <!--<li><a href="__APP__/News/planThree/" target="main">励志名言设置</a></li>-->
+        <!--<li><a href="__APP__/YouZi/videomanage/" target="main">视频栏目设置</a></li>-->
+        <li><a href="__APP__/YouZi/cody/c_id/7" target="main">数据库备份</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/3" target="main">参数设置</a></li>
+        <li><a href="__APP__/YouZi/cody/c_id/9" target="main">清空数据</a></li>
+    </ul>
+    </div>
+    </div>
+	</egt>
+
+</div>
+</div>
+</body>
+</html>

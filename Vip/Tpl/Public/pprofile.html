@@ -1,0 +1,53 @@
+<include file="../Public/header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>账户查询 </h1></div>
+    <table width="100%" border="0" cellspacing="10" cellpadding="0">
+              <tr>
+                <td width="18%" align="right">账户名称：</td>
+                <td width="82%" align="left">{$rs['user_id']}</td>
+              </tr>
+			  <tr>
+                <td width="18%" align="right">推荐人数：</td>
+                <td width="82%" align="left">{$rs['re_nums']}人</td>
+              </tr>
+              <tr>
+                <td align="right">会员级别：</td>
+                <td align="left">{$u_level}</td>
+              </tr>
+              <tr>
+                <td align="right">总 奖 金：</td>
+                <td align="left">{$rs['zjj']}</td>
+              </tr>
+              <tr>
+                <td align="right">现金账户：</td>
+                <td align="left">{$rs['agent_use']}</td>
+              </tr>
+              <tr>
+                <td align="right">电子账户：</td>
+                <td align="left">{$rs['agent_cash']}</td>
+              </tr>
+              <tr>
+                <td align="right">重复消费：</td>
+                <td align="left">{$rs['agent_cf']}</td>
+              </tr>
+              <tr style="display:none">
+                <td align="right">开通币余额：</td>
+                <td align="left">{$rs['agent_kt']}</td>
+              </tr>
+              <tr style="display:none">
+                <td align="right">重消币余额：</td>
+                <td align="left">{$rs['agent_xf']}</td>
+              </tr>
+              <tr style="display:none">
+                <td align="right">股权兑换币：</td>
+                <td align="left">{$rs['agent_gp']}</td>
+              </tr>
+              <tr style="display:none">
+                <td align="right">持股数量：</td>
+                <td align="left">{$rs['agent_gp']}</td>
+              </tr>
+              
+            </table>
+</div>
+</body>
+</html>

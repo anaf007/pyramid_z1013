@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>会员管理系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Base.js\"></sc"+"ript>")</script>
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/prototype.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/mootools.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Ajax/ThinkAjax.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/Form/CheckForm.js\"></sc"+"ript>")</script> 
+<script type="text/javascript">document.write("<scr"+"ipt src=\"__PUBLIC__/Js/common.js\"></sc"+"ript>")</script> 
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+a{color:#006699;font-size:12px;text-decoration: none;}
+a:link{color:#006699;font-size:12px;text-decoration: none;}
+a:hover{color:#006699;font-size:12px;text-decoration: none;}
+a:visited{color:#006699;font-size:12px;text-decoration: none;}
+-->
+</style>
+<script language="JavaScript">
+var PUBLIC	 =	 '__PUBLIC__';
+ThinkAjax.image = [	 '__PUBLIC__/Images/loading2.gif', '__PUBLIC__/Images/ok.gif','__PUBLIC__/Images/update.gif' ]
+ThinkAjax.updateTip	=	'登录中～';
+function loginHandle(data,status){
+if (status==1)
+{
+$('result').innerHTML	=	'<span style="color:blue"><img SRC="__PUBLIC__/Images/ok.gif" WIDTH="20" HEIGHT="20" BORDER="0" ALT="" align="absmiddle" > 登录成功！3 秒后跳转～</span>';
+$('form1').reset();
+window.location = '__URL__';
+}
+}
+function keydown(e){
+	var e = e || event;
+	if (e.keyCode==13)
+	{
+	ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result');
+	}
+}
+function fleshVerify(type){
+//重载验证码
+var timenow = new Date().getTime();
+if (type)
+{
+$('verifyImg').src= '__URL__/verify/adv/1/'+timenow;
+}else{
+$('verifyImg').src= '__URL__/verify/'+timenow;
+}
+
+}
+//
+</script>
+
+</head>
+<body onLoad="document.login.account.focus()">
+    <div>
+        <table width="100%" cellspacing="0" style="background-color: snow">
+            <tr>
+                <td colspan="4" style="background-image: url(__PUBLIC__/Images/bg5.gif); border-top-width: 1px; border-left-width: 1px; border-left-color: #7f9db9; border-bottom-width: 1px; border-bottom-color: #7f9db9; border-top-color: #7f9db9; border-right-width: 1px; border-right-color: #7f9db9; height: 55px;" width="100%">
+                   <img src="__PUBLIC__/Images/top4.gif" name="Image2" width="270" height="53" id="Image2" style="border-width:0px;" /></td>
+            </tr>
+            <tr style="color: #000000">
+                <td style="height: 460px; border-top-width: 1px; border-left-width: 1px; border-left-color: dimgray; border-bottom-width: 1px; border-bottom-color: dimgray; width: 40%; border-top-color: dimgray; border-right-width: 1px; border-right-color: dimgray;" valign="middle" align="center">
+                    &nbsp;<table cellpadding="2" cellspacing="2" style="width: 100%">
+                        <tr>
+                            <td style="width: 20%; text-align: right">
+                            </td>
+                            <td style="width: 20%; text-align: right">
+                                <img src="__PUBLIC__/Images/ico_map.gif" name="Image1" width="24" height="24" id="Image1" style="border-width:0px;" /></td>
+                            <td style="width: 30%; text-align: left">
+                                    <a href="http://map.baidu.com/" target="_blank">全国地图</a></td>
+                            <td style="width: 7%; text-align: right">
+                                <img id="Image4" src="__PUBLIC__/Images/ico_dict.gif" style="border-width:0px;" /></td>
+                            <td style="width: 39%; text-align: left">
+                                <span style="color: #000000">
+                                    <a href="http://qq.ip138.com/tran.htm" target="_blank">在线翻译</a></span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%; text-align: right">
+                            </td>
+                            <td style="width: 20%; text-align: right">
+                                <img id="Image6" src="__PUBLIC__/Images/ico_news.gif" style="border-width:0px;" /></td>
+                            <td style="width: 30%; text-align: left">
+                                <a href="http://www.ip138.com/jb.htm" target="_blank">航班班次</a></td>
+                            <td style="width: 7%; text-align: right">
+                                <img id="Image9" src="__PUBLIC__/Images/ico_youbian.gif" style="border-width:0px;" /></td>
+                            <td style="width: 39%; text-align: left">
+                                <a href="http://qq.ip138.com/train/" target="_blank">火车车次</a></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%; text-align: right">
+                            </td>
+                            <td style="width: 20%; text-align: right">
+                                <img id="Image7" src="__PUBLIC__/Images/ico_wireless.gif" style="border-width:0px;" /></td>
+                            <td style="width: 30%; text-align: left">
+                                <a href="http://www.ip138.com/sj/index.htm" target="_blank">手机号码归属地</a></td>
+                            <td style="width: 7%; text-align: right">
+                                <img id="Image10" src="__PUBLIC__/Images/ico_baike.gif" style="border-width:0px;" /></td>
+                            <td style="width: 39%; text-align: left">
+                                <a href="http://qq.ip138.com/day/" target="_blank">万年历</a></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">
+                            </td>
+                            <td style="width: 20%; text-align: right">
+                                <img id="Image8" src="__PUBLIC__/Images/ico_hi.gif" style="border-width:0px;" /></td>
+                            <td style="width: 30%; text-align: left">
+                                <a href="http://www.ip138.com/ips8.asp" target="_blank">IP地址查询</a></td>
+                            <td style="width: 7%; text-align: right">
+                                <img id="Image11" src="__PUBLIC__/Images/ico_index.gif" style="border-width:0px;" /></td>
+                            <td style="width: 39%; text-align: left">
+                                <a href="http://life.baidu.com/#stock" target="_blank">股票信息</a></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">
+                            </td>
+                            <td style="width: 20%; text-align: right">
+                                <img id="Image3" src="__PUBLIC__/Images/ico_gov.gif" style="border-width:0px;" /></td>
+                            <td style="width: 30%; text-align: left">
+                                    <a href="http://life.baidu.com/#history" target="_blank">历史上的今天</a></td>
+                            <td style="width: 7%; text-align: right">
+                                <img id="Image5" src="__PUBLIC__/Images/ico_top.gif" style="border-width:0px;" /></td>
+                            <td style="width: 39%; text-align: left">
+                                <a href="http://life.baidu.com/#weather" target="_blank">天气预报</a></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%">
+                            </td>
+                            <td style="width: 20%; text-align: right">
+                                <img id="Image13" src="__PUBLIC__/Images/ico_zhidao.gif" style="border-width:0px;" /></td>
+                            <td style="width: 30%; text-align: left">
+                                <a href="http://qq.ip138.com/idsearch/" target="_blank">身份证号码验证</a></td>
+                            <td style="width: 7%; text-align: right">
+                                <img id="Image14" src="__PUBLIC__/Images/ico_site.gif" style="border-width:0px;" /></td>
+                            <td style="width: 39%; text-align: left">
+                                <a href="http://www.ip138.com/ems/" target="_blank">快递查询</a></td>
+                        </tr>
+                    </table>
+                </td>
+                <td align="center" style="border-top-width: 1px; border-left-width: 1px; border-left-color: dimgray;
+                    border-bottom-width: 1px; border-bottom-color: dimgray; width: 0px; border-top-color: dimgray;
+                    height: 460px; border-right-width: 1px; border-right-color: dimgray" valign="middle">
+                    <table cellpadding="0" cellspacing="0" style="width: 1px; height: 326px; background-color: silver">
+                        <tr>
+                            <td style="width: 1px; height: 322px">
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </table>
+                </td>
+                <td colspan="2" valign="middle" style="width: 55%; height: 460px; border-top-width: 1px; border-left-width: 1px; border-left-color: #7f9db9; border-bottom-width: 1px; border-bottom-color: #7f9db9; border-top-color: #7f9db9; border-right-width: 1px; border-right-color: #7f9db9; text-align: center;" align="center">
+                    <table cellpadding="2" cellspacing="2" style="width: 100%">
+                       <!--<form name="form1" method="post" action="index.asp" onSubmit="return CheckForm();">-->
+						<form method='post' name="login" id="form1"  >
+                        <tr>
+                          <td colspan="3">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: left">
+                                <span id="tips1" style="font-size: 9pt; color: darkgreen"><strong>你知道吗？</strong></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="height: 6px; text-align: left">
+                                <span id="Span1"><span style="font-size: 9pt; color: #ff6600; font-family: Tahoma">用户名称可以输入用户名或会员编号，您登录平台后请定期更换密码。</span></span></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%; text-align: right; height: 18px;">                            </td>
+                            <td style="width: 40%; height: 18px;">                            </td>
+                            <td style="width: 40%; height: 18px;">                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="4" style="width: 20%; text-align: left; height: 27px;">
+                     		<dd class="error"><div id="result"  style="font-size:12px; "></div></dd>
+                            </td>
+                         </tr>
+                        <tr>
+                            <td style="width: 20%; text-align: right; height: 27px;">
+                                <span id="Label1" style="color:#626262;font-family:Tahoma;font-size:9pt;font-weight:normal;">用户名称：</span></td>
+                            <td style="width: 40%; text-align: left; height: 27px;">
+							
+							<input name="account" type="text" class="input_0" maxlength="50" check="Require" warning="请输入帐号" style="width:164px;">
+							
+							</td>
+                            <td style="width: 40%; height: 27px;">                                </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%; text-align: right; height: 27px;">
+                                <span id="Label2" style="color:#626262;font-family:Tahoma;font-size:9pt;font-weight:normal;">登录密码：</span></td>
+                            <td style="width: 40%; text-align: left; height: 27px;">
+							
+							<input name="password" type="password" class="input_0" maxlength="50" check="Require" warning="请输入密码" style="width:164px;">
+							</td>
+                            <td style="width: 40%; height: 27px;"> </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%; text-align: right; height: 27px;">
+                                <span id="Label7" style="color:#626262;font-family:Tahoma;font-size:9pt;font-weight:normal;">验证码：</span></td>
+                            <td style="width: 40%; text-align: left; height: 27px;">
+							
+							<input name="verify" type="text" class="input_0" onKeyDown="keydown(event)" check="Require" warning="请输入验证码"  size="4" maxlength="4" title="点击图片可刷新验证码">&nbsp;&nbsp;<img id="verifyImg" src="__URL__/verify/" width="55" onclick="fleshVerify()" border="0" alt="点击刷新验证码" style="cursor:pointer" align="absmiddle" /><input type="hidden" name="ajax" value="1">
+							
+							</td>
+                            <td style="width: 40%; height: 27px;"> </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" style="height: 40px">
+                                <input name="button" type="button" id="Submit" value="登录" style="width: 72px; height: 22px;border-width:1px;border-style:Solid;border-color:#7F9DB9;font-family:Tahoma;font-size:9pt;background-color:#FFFFFF;color:#0066CC;" onClick="ThinkAjax.sendForm('form1','__URL__/checkLogin/',loginHandle,'result')" />
+                                
+                                <input name="Submit1" type="button" id="Submit1" onclick="window.opener=null;window.close();" value="关闭" style="width: 72px; height: 22px;border-width:1px;border-style:Solid;border-color:#7F9DB9;font-family:Tahoma;font-size:9pt; background-color:#FFFFFF;color:#0066CC;" /></td>
+                            <td></td>
+                        </tr>
+						</form>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="4" style="border-top-width: 1px; border-left-width: 1px;
+                    border-left-color: dimgray; border-bottom-width: 1px; border-bottom-color: dimgray;
+                    border-top-color: dimgray; height: 54px; border-right-width: 1px; border-right-color: dimgray"
+                    valign="middle">
+                    <table cellpadding="0" cellspacing="0" style="border-right: #3399cc 1px solid; border-top: #3399cc 1px solid;
+                        border-left: #3399cc 1px solid; width: 880px; border-bottom: #3399cc 1px solid">
+                        <tr>
+                            <td align="left" style="border-top-width: 1px; border-bottom-width: 1px; border-bottom-color: #75ca35;
+                                width: 10%; border-top-color: #75ca35; color: #ffffff; height: 20px; background-color: #006699; text-align: center;font-size:12px;">公司信息</td>
+                            <td style="width: 30%; text-align: center; height: 20px;">
+                                <span id="CompanyNameLab" style="color:DimGray;font-family:Tahoma;font-size:9pt;font-weight:normal;">嘉安商行：聚集全世界的爱心，让暴利不再暴利</span></td>
+                            <td style="width: 30%; text-align: center; height: 20px;">
+                                <span id="CompanyPhoneLab" style="color:DimGray;font-family:Tahoma;font-size:9pt;font-weight:normal;">微利时代、诚信经营、铸造百年企业。 </span></td>
+                            <td style="width: 30%; text-align: center; height: 20px;">
+                                <span id="CompanyUrlLab" style="color:DimGray;font-family:Tahoma;font-size:9pt;font-weight:normal;">最新复合式营销模式：零售、系统都能赚大钱</span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,59 @@
+<include file="../Public/header" />
+<div id="main_top"><font>您现在的位置是：</font>会员晋级管理</div>
+<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/adminmemberJJ/">搜索会员：<input type="text" name="UserID" title="帐号查询">&nbsp;&nbsp;
+    <select name="ulevel">
+    <option value="0">全部</option>
+    <volist name="voo" id="ulv">
+    <option value="{$key}">{$level[$key-1]}</option>
+    </volist>
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="Submit" value="查询"  class="btn1"/>
+    </form></td>
+    </tr>
+</table>
+<form name="form3" method="post" action="__URL__/adminMenberAC">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+    <tr align="center">
+        <th nowrap><span>序号</span></th>
+        <th nowrap><span>会员编号</span></th>
+        <th nowrap><span>姓名</span></th>
+        <th nowrap><span>昵称</span></th>
+        <th nowrap><span>联系电话</span></th>
+        <th nowrap><span>开通时间</span></th>
+        <th nowrap><span>会员级别</span></th>
+        <th nowrap><span>总奖金</span></th>
+        <th nowrap><span>升级</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo">
+    <tr class="content_td lz" align="center"> 
+        <td>{$vo['id']}</td>
+        <td nowrap>{$vo['user_id']}</td>
+        <td nowrap>{$vo['user_name']}</td>
+        <td nowrap>{$vo['nickname']}</td>
+        <td nowrap>{$vo['user_tel']}</td>
+        <td nowrap>{$vo.pdt|date='Y-m-d H:i:s',###}</td>
+        <td nowrap>{$voo[$vo['u_level']]}</td>
+        <td nowrap>{$vo['zjj']}</td>
+        <td><a href="__URL__/MenberJinji/uid/{$vo['id']}/">升级</a></td>
+    </tr>
+    </volist>
+    
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+<tr>
+    	<td align="center">{$page}</td>
+    </tr>
+</table>
+</form>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

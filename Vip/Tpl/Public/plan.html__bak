@@ -1,0 +1,14 @@
+<style type="text/css"></style>
+<include file="../Public/header" />
+<div class="sub_bav">
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr class="content_td">
+    <td class="tabletd" colspan="4" >&nbsp;</td>
+    </tr>
+  <tr class="content_td">
+    <td colspan="4">{$vo['content']}</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

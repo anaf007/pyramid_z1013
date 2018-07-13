@@ -1,0 +1,48 @@
+<include file="../Public/header" />
+<style>
+.taimg{
+	border:1px solid #CCC; cursor:hand;
+}
+.imgdiv{
+	margin:10px 10px 10px 10px;
+	width:260px;
+	height:250px;
+	float:left;
+}
+</style>
+<div id="main_top"><font>您现在的位置是：</font>产品展示</div>
+<div class="bar m10">
+<div class="bar_header">产品展示</div>
+<div class="bar_cont">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="100%" height="5" colspan="3"></td>
+    </tr>
+    <tr>
+      <td colspan="3" >
+      <volist name="list" id="vo">
+      <div class="imgdiv">
+      <table width="250" border="0" cellspacing="1" class="taimg" onclick="window.location='__URL__/Product_Show/pid/{$vo['id']}/'" onmouseover="this.style.background='#eeeeee'" onmouseout="this.style.background=''">
+          <tr>
+            <td height="170" align="center"><img name="" src="{$downurl[$vo['id']]}" width="200" height="150" title="{$vo['name']}" style="padding:5px;"/></td>
+          </tr>
+          <tr>
+            <td align="center"><strong>{$vo.name|substr=0,40}</strong></td>
+          </tr>
+          <tr>
+            <td align="center">市场价：<span style="color:red">{$vo.money|default=0}</span></td>
+          </tr>
+        </table>
+        </div>
+        </volist>
+      </td>
+    </tr>
+  </table>
+  <div class="xiayiye">
+        <ul><li>{$page}</li></ul>
+      </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+.STYLE2 {color: #00CC99}
+-->
+</style>
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="ncenter_box">
+<div class="accounttitle"><h1>会员管理</h1></div>
+
+<table width="100%" cellpadding=0 cellspacing=0  >
+<td colspan="19" class="tabletd">
+<form method="post" action="__URL__/GuanShuiPuTao">
+<div class="fLeft">
+	<span id="key">会员编号：
+	<input type="text" name="UserID" title="帐号查询">
+	<input type="submit" name="Submit" value="提 交" class="btn1" />
+	</span></div>
+<div  id="searchM" class=" none search cBoth" ></div>
+</form>	  </td>
+    </tr>
+<form name="form3" method="post" action="__URL__/GuanShuiPuTaoZZ">
+<tr align="center">
+	<td nowrap >会员编号</td>
+	<td nowrap >注册时间</td>
+	<td nowrap >开通时间</td>
+	<td nowrap >缴费时间</td>
+</tr>
+<volist name="list" id="vo">
+<tr align="center"> 
+	<td nowrap="nowrap">{$vo['UserID']}</td>
+	<td nowrap="nowrap">{$vo['RDT']}</td>
+	<td nowrap="nowrap">{$vo['PDT']}</td>
+	<td nowrap="nowrap">{$vo.wlf|date='Y-m-d',###}</td>
+</tr>
+</volist>
+<tr><input name="allcheckboxs" type="hidden" value="">
+	<td  colspan="19" >&nbsp;</td>
+</tr>
+</form>
+<tr align="center">
+	<td colspan="19">{$page}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

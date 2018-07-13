@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link href="__PUBLIC__/Css/css2.css" type="text/css" rel="stylesheet" />
+
+<style type="text/css">
+<!--
+.STYLE1 {font-size: 12px}
+-->
+</style>
+</head>
+<body>
+    <div id="topbox" style="height:85px;">
+    <img src="__PUBLIC__/Images/top.jpg" width="1440" height="85" />
+</div>
+<div class="top_top" style="height:40px">
+        <span class="time_s">
+        <div id="Clock">
+<script>
+   function tick() {
+   var hours, minutes, seconds, xfile;
+   var intHours, intMinutes, intSeconds;
+   var today, theday;
+   today = new Date();
+   function initArray(){
+   this.length=initArray.arguments.length
+   for(var i=0;i<this.length;i++)
+   this[i+1]=initArray.arguments[i] }
+   var d=new initArray(
+   " 星期日",
+   " 星期一",
+   " 星期二",
+   " 星期三",
+   " 星期四",
+   " 星期五",
+   " 星期六");
+   theday = today.getYear()+"年" + [today.getMonth()+1]+"月" +today.getDate()+"日" + d[today.getDay()+1];
+   intHours = today.getHours();
+   intMinutes = today.getMinutes();
+   intSeconds = today.getSeconds();
+   if (intHours == 0) {
+   hours = "12:";
+   xfile = " 午夜 ";
+   } else if (intHours < 12) {
+   hours = intHours+":";
+   xfile = " 上午 ";
+   } else if (intHours == 12) {
+   hours = "12:";
+   xfile = " 正午 ";
+   } else {
+   intHours = intHours - 12
+   hours = intHours + ":";
+   xfile = " 下午 ";
+   }
+   if (intMinutes < 10) {
+   minutes = "0"+intMinutes+":";
+   } else {
+   minutes = intMinutes+":";
+   }
+   if (intSeconds < 10) {
+   seconds = "0"+intSeconds+" ";
+   } else {
+   seconds = intSeconds+" ";
+   }
+   timeString = theday+xfile+hours+minutes+seconds;
+   Clock.innerHTML = timeString;
+   window.setTimeout("tick();", 100);
+   }
+   window.onload = tick;
+</script>
+</div>
+</span>
+        <div class="time_s" style="margin-left:60px;">{$Think.session.loginNickName}：您好! &nbsp;欢迎您 登录 会员管理系统. 
+         <gt name="type" value="0">
+            <img src="__PUBLIC__/Images/33.gif"  />
+            <embed autostart="true" controls="ControlPanel" hidden="true" width="0" height="0" src="__PUBLIC__/Images/Messages.wma"; style="border:0px;">
+         </gt>
+        
+        </div>
+		
+ 　　 <span class="STYLE1"><a href="__APP__/Public/main/" target="main"><span>返回首页</span></a>　|　<a href="__URL__/LogOut/" target="_top" onClick="{if(confirm('确定安全退出吗?')){return true;}return false;}"><img src="__PUBLIC__/Images/error.gif" style="vertical-align:middle" width="20" height="20" border="0" alt="" align="middle"><span> 安全退出</span></a>　&nbsp;</span></div>
+</body>
+</html>

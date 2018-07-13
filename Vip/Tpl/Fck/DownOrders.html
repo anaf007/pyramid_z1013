@@ -1,0 +1,64 @@
+<style type="text/css">
+.STYLE1 {color: #FF0000}
+</style>
+<tagLib name="html" />
+<include file="../Public/header" />
+<!-- 功能操作区域结束 -->
+<script language='javascript'>
+ function CheckForm(){
+	if(confirm('您确定提现金额'+document.form1.ePoints.value+'吗？'))
+	{
+	  return true;
+	}else{
+	alert('您取消了本次操作');
+       return false;
+    }
+}
+</script>
+<!-- 列表显示区域  -->
+
+<div class="sub_bav">
+<table width="100%" border="0" cellspacing="1" cellpadding="0">
+  <tr>
+    <td class="tabletd">&nbsp;</td>
+    </tr>
+	<form name="form1" method="post" action="__URL__/Orders_save" onSubmit="{return CheckForm();}">
+  <tr class="content_td">
+    <td width="83%">
+  
+  
+     <table width="100%" border="0" cellspacing="1" cellpadding="0">
+       <tr class='content_td'>
+         <td align="center">产品名称</td>
+         <td align="center">购买操作</td>
+         <td align="center">产品单价(单位:元)</td>
+         <td align="center">购买数量</td>
+       </tr>
+       <volist name="list" id="vo">
+       <tr class='content_td'>
+         <td align="center">{$vo['name']}</td>
+         <td align="center"><input name="tabledb[]" type="checkbox" id="cp" value="{$vo['id']}" /></td>
+         <td align="center">￥{$vo['money']}</td>
+         <td align="center"><input name="num{$vo['id']}" type="text" id="num" value="1" size="4" maxlength="12" />
+           (件)</td>
+       </tr>
+       </volist>
+     </table>
+  
+   
+
+    </td>
+  </tr>
+  <tr class="content_td" align="center">
+    <td><input type="submit" name="Submit" value="提交订单" class="btn1" /></td>
+  </tr>
+  </form>
+  
+  
+<tr class="content_td">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<style type="text/css">
+.STYLE1 {color: #FF0000}
+.STYLE3 {color: #99CC66}
+</style>
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="sub_bav">
+<table width="100%" cellpadding=0 cellspacing="1" border=0>
+<tr >
+  <td colspan="20" class="tabletd">
+        <table align="left" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#001355">
+            <form method='post' action="__URL__/OrdersList/s/{$s}">
+            <div class="fLeft"><span id="key">产品名称：
+                <input name="title" type="text"id="title" title="" maxlength="200" ></span>
+              <input type="submit" name="Submit" value="查 询" class="btn1"/>
+            </div>
+            <div  id="searchM" class=" none search cBoth" ></div>
+            </form> 
+        </td></tr></table>
+        <table align="right" border="0" cellpadding="0" cellspacing="0"><tr><td bgcolor="#001355">
+            <a href="__URL__/OrdersList/s/1">未发货</a> <a href="__URL__/OrdersList/s/2">已发货</a>&nbsp;
+        </td></tr></table>
+   </td>
+</tr>
+<form name="form3" method="post" action="__URL__/OrdersAc">
+
+<tr class='content_td' align="center">
+	<eq name='s' value='1'><td><input type="checkbox" name="chkall" value="checkbox" onclick="CheckAll(this.form)"  class="btn2" id="chkall" /></td></eq>
+	<td>订单编号</td>
+	<td>会员编号</td>
+	<td>会员昵称</td>
+	<td>产品名称</td>
+	<td>产品价格</td>
+	<td>订购数量</td>
+	<td>订单金额</td>
+	<td>订单时间</td>
+	<neq name='s' value='1'><td>发货时间</td></neq>
+	<td>状态</td>
+</tr>
+<volist name="list" id="vo">
+<tr align="center"> 
+	<eq name='s' value='1'><td class='content_td'align="center"><input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" /></td></eq>
+	<td class='content_td'>{$vo['id']}</td>
+	<td class='content_td'>{$vo['uid']|user_id}</td>
+	<td class='content_td'>{$vo['uid']|nickname}</td>
+	<td class='content_td'>{$vo['pname']}</td>
+	<td class='content_td'>{$vo['pmoney']}</td>
+	<td class='content_td'>{$vo['pnum']}</td>
+	<td class='content_td'>{$vo['pnum']*$vo['pmoney']}</td>
+	<td class='content_td'>{$vo['create_time']|date='Y-m-d H:i:s',###}</td>
+	<neq name='s' value='1'><td class='content_td'>{$vo['confirm_time']|date='Y-m-d H:i:s',###}</td></neq>
+	<td class='content_td'style="color:red;"><switch name="vo['status']"><case value='0'>未发货</case><case value='1'>无货</case><case value='2'>已发货</case></switch></td>
+</tr>
+</volist>
+<eq name='s' value='1'>
+<tr class="content_td">
+	<td  colspan=13 >&nbsp; &nbsp;
+   	  <input name="全选" type="button" class="btn1" id="全选" onclick="CheckAll(this.form)" value="全选" />	  &nbsp;&nbsp;
+	  <input type="submit" name="action" value="发货" class="btn1">&nbsp; &nbsp;
+	  <input type="submit" name="action" value="无货" class="btn1"></td>
+</tr>
+</eq>
+<tr class="content_td" align="center">
+	<td colspan="20">{$page}</td>
+</tr>
+</form>
+</table>
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

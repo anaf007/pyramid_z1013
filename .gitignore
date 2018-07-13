@@ -1,0 +1,10 @@
+ThinkPHP/*
+Vip/Runtime/*
+
+
+
+#Thumbs.db
+Public/Thumbs.db
+Public/Uploads/Thumbs.db
+Public/Css/Thumbs.db
+*/Thumbs.db

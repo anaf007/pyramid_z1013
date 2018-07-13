@@ -1,0 +1,32 @@
+<style>
+<!--
+body { background-color:#DEEFF7; }
+.minnavi { font-size:14px; margin-bottom:5px; }
+.minnavi a { text-decoration:none; color:#0145C0;}
+.minnavi a:hover { text-decoration:none; color:blue;}
+-->
+</style>
+<script language="javascript" type="text/javascript">
+function SetCwinHeight()
+{
+var cwin=document.getElementById("frmpro");
+if (document.getElementById)
+{
+if (cwin && !window.opera)
+{
+if (cwin.contentDocument && cwin.contentDocument.body.offsetHeight)
+cwin.height = cwin.contentDocument.body.offsetHeight;
+else if(cwin.Document && cwin.Document.body.scrollHeight)
+cwin.height = cwin.Document.body.scrollHeight;
+}
+}
+}
+</script>
+<div class="minnavi">
+	<a href="__APP__/main" target="frmpro">新闻公告</a>
+	<a href="__APP__/main" target="frmpro">新闻公告</a>
+	<a href="__APP__/main" target="frmpro">新闻公告</a>
+</div>
+<iframe id=frmpro style="Z-INDEX: 1; WIDTH: 100%" name=frmpro src="__APP__/Public/main" frameborder=0 scrolling="no" target="self" onload="Javascript:SetCwinHeight()"></iframe>
+</body>
+</html>

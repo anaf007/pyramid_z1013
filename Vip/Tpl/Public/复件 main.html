@@ -1,0 +1,164 @@
+<include file="../Public/header" />
+<style>
+.cl1{ text-align:center; background:#272727;}
+.cl2{ text-align:center; background:#455572;}
+.a1:link{ color:#00a2ff; font-weight:bold;}
+.a1:visited{ color:#00a2ff;}
+.a1:active{ color:#F00;}
+.a1:hover{ color:#F00;}
+
+.a2:link{ color:#d5d5d5;}
+.a2:visited{ color:#d5d5d5;}
+.a2:active{ color:#d5d5d5;}
+.a2:hover{ color:#d5d5d5;}
+
+.a3:link{ color:#474747;}
+.a3:visited{ color:#474747;}
+.a3:active{ color:#474747;}
+.a3:hover{ color:#474747;}
+</style>
+<script>
+//显示或隐藏
+function doShow(oid,obj){
+	var ttt = "mc"+oid;
+	if(document.getElementById(ttt).style.display==''){
+		obj.src = '__PUBLIC__/Images/expend.gif';
+		document.getElementById(ttt).style.display = 'none';
+	}else{
+		obj.src = '__PUBLIC__/Images/collapse.gif';
+		document.getElementById(ttt).style.display = '';
+	}
+}
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="77%" valign="top">
+    <div class="bar1 m10">
+    <div class="bar_header1"><span style="float:left"><IMG border="0" align="absMiddle" src="__PUBLIC__/Images/bulletin.gif"> 我的邮箱 </span><div class="head_r"><IMG style="CURSOR: hand" onclick="doShow('1',this);" border=0 name=imgShow align=absMiddle src="__PUBLIC__/Images/collapse.gif"></div></div>
+        <div class="bar_cont1" id="mc1">
+        <table width="100%" border="0" cellspacing="0" cellpadding="5" class="tab5">
+          <volist name='m_list' id='vo'>
+          <tr>
+            <td>&nbsp;&nbsp;<img src="__PUBLIC__/Images/li.gif">&nbsp;&nbsp;[<font color="#FF0000">{$vo['r_user_id']}</font>]&nbsp;&nbsp;<a href="__APP__/Fck/messagesShow/Pid/{$vo['id']}">{$vo['title']}</a>&nbsp;&nbsp;<font color='#999999'>[{$vo.pdt|date='Y-m-d',###}]</font></td>
+          </tr>
+          </volist>
+        </table>
+    </div>
+    <div class="ms_bg_end"></div>
+    </div>
+    
+    <div class="bar1 m10">
+    <div class="bar_header1"><span style="float:left"><IMG border="0" align="absMiddle" src="__PUBLIC__/Images/news.gif"> 新闻 </span><div class="head_r"><IMG style="CURSOR: hand" onclick="doShow('2',this);" border=0 name=imgShow align=absMiddle src="__PUBLIC__/Images/collapse.gif"></div></div>
+        <div class="bar_cont1" id="mc2">
+        <table width="100%" border="0" cellspacing="0" cellpadding="6" class="tab5">
+          <volist name='f_list' id='vo'>
+          <tr>
+            <td>&nbsp;&nbsp;<img src="__PUBLIC__/Images/li.gif">&nbsp;&nbsp;<a href="__URL__/News_show/NewID/{$vo.id}" title="1123"><font>{$vo['title']}</font></a>&nbsp;&nbsp;<font color='#999999'>[{$vo.create_time|date='Y-m-d',###}]</font></td>
+          </tr>
+          </volist>
+        </table>
+    </div>
+    <div class="ms_bg_end"></div>
+    </div>
+    
+    <!--<div class="bar1 m10">
+    <div class="bar_header1"><span style="float:left"><IMG border="0" align="absMiddle" src="__PUBLIC__/Images/filemanage.gif"> 最新文档 </span><div class="head_r"><IMG style="CURSOR: hand" onclick="doShow('3',this);" border=0 name=imgShow align=absMiddle src="__PUBLIC__/Images/collapse.gif"></div></div>
+        <div class="bar_cont1" id="mc3">
+        
+    	</div>
+    <div class="ms_bg_end"></div>
+    </div>-->
+    </td>
+    <td width="10">&nbsp;</td>
+    <td valign="top">
+    <!--<div class="bar1 m10">
+    <div class="bar_header1"><span style="float:left"><IMG border="0" align="absMiddle" src="__PUBLIC__/Images/email.gif"> 信息提示 </span><div class="head_r"><IMG style="CURSOR: hand" onclick="doShow('4',this);" border=0 name=imgShow align=absMiddle src="__PUBLIC__/Images/collapse.gif"></div></div>
+        <div class="bar_cont1" id="mc4">
+    	</div>
+    <div class="ms_bg_end"></div>
+    </div>-->
+    <!--<div class="bar1 m10">
+    <div class="bar_header1"><span style="float:left"><IMG border="0" align="absMiddle" src="__PUBLIC__/Images/calendar.gif"> 今日日程 </span><div class="head_r"><IMG style="CURSOR: hand" onclick="doShow('5',this);" border=0 name=imgShow align=absMiddle src="__PUBLIC__/Images/collapse.gif"></div></div>
+        <div class="bar_cont1" id="mc5">
+    	</div>
+    <div class="ms_bg_end"></div>
+    </div>-->
+    <div class="bar1 m10">
+    <div class="bar_header1"><span style="float:left"><IMG border="0" align="absMiddle" src="__PUBLIC__/Images/month.gif"> 日历 </span><div class="head_r"><IMG style="CURSOR: hand" onclick="doShow('6',this);" border=0 name=imgShow align=absMiddle src="__PUBLIC__/Images/collapse.gif"></div></div>
+        <div class="bar_cont1" id="mc6">
+        <table class="datetab" width="95%" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#818181" style="font-family:Verdana, Geneva, sans-serif">
+          <tr>
+            <td height="30" colspan="7" align="center" bgcolor="#818181" style="color:#00a2ff;background: #455572"><strong>{$now_y}年{$now_m}月</strong></td>
+            </tr>
+          <tr>
+            <td width="15%" height="24" align="center" bgcolor="#272727" style="color:#fff"><strong>日</strong></td>
+            <td width="14%" align="center" bgcolor="#272727" style="color:#fff"><strong>一</strong></td>
+            <td width="14%" align="center" bgcolor="#272727" style="color:#fff"><strong>二</strong></td>
+            <td width="14%" align="center" bgcolor="#272727" style="color:#fff"><strong>三</strong></td>
+            <td width="14%" align="center" bgcolor="#272727" style="color:#fff"><strong>四</strong></td>
+            <td width="14%" align="center" bgcolor="#272727" style="color:#fff"><strong>五</strong></td>
+            <td width="15%" align="center" bgcolor="#272727" style="color:#fff"><strong>六</strong></td>
+          </tr>
+          <tr>
+            <td height="24" class="{$ca[1]}">{$day_array[1]}</td>
+            <td class="{$ca[2]}">{$day_array[2]}</td>
+            <td class="{$ca[3]}">{$day_array[3]}</td>
+            <td class="{$ca[4]}">{$day_array[4]}</td>
+            <td class="{$ca[5]}">{$day_array[5]}</td>
+            <td class="{$ca[6]}">{$day_array[6]}</td>
+            <td class="{$ca[7]}">{$day_array[7]}</td>
+          </tr>
+          <tr>
+            <td height="24" class="{$ca[8]}">{$day_array[8]}</td>
+            <td class="{$ca[9]}">{$day_array[9]}</td>
+            <td class="{$ca[10]}">{$day_array[10]}</td>
+            <td class="{$ca[11]}">{$day_array[11]}</td>
+            <td class="{$ca[12]}">{$day_array[12]}</td>
+            <td class="{$ca[13]}">{$day_array[13]}</td>
+            <td class="{$ca[14]}">{$day_array[14]}</td>
+          </tr>
+          <tr>
+            <td height="24" class="{$ca[15]}">{$day_array[15]}</td>
+            <td class="{$ca[16]}">{$day_array[16]}</td>
+            <td class="{$ca[17]}">{$day_array[17]}</td>
+            <td class="{$ca[18]}">{$day_array[18]}</td>
+            <td class="{$ca[19]}">{$day_array[19]}</td>
+            <td class="{$ca[20]}">{$day_array[20]}</td>
+            <td class="{$ca[21]}">{$day_array[21]}</td>
+          </tr>
+          <tr>
+            <td height="24" class="{$ca[22]}">{$day_array[22]}</td>
+            <td class="{$ca[23]}">{$day_array[23]}</td>
+            <td class="{$ca[24]}">{$day_array[24]}</td>
+            <td class="{$ca[25]}">{$day_array[25]}</td>
+            <td class="{$ca[26]}">{$day_array[26]}</td>
+            <td class="{$ca[27]}">{$day_array[27]}</td>
+            <td class="{$ca[28]}">{$day_array[28]}</td>
+          </tr>
+          <tr>
+            <td height="24" class="{$ca[29]}">{$day_array[29]}</td>
+            <td class="{$ca[30]}">{$day_array[30]}</td>
+            <td class="{$ca[31]}">{$day_array[31]}</td>
+            <td class="{$ca[32]}">{$day_array[32]}</td>
+            <td class="{$ca[33]}">{$day_array[33]}</td>
+            <td class="{$ca[34]}">{$day_array[34]}</td>
+            <td class="{$ca[35]}">{$day_array[35]}</td>
+          </tr>
+          <tr>
+            <td height="24" class="{$ca[36]}">{$day_array[36]}</td>
+            <td class="{$ca[37]}">{$day_array[37]}</td>
+            <td class="{$ca[38]}">{$day_array[38]}</td>
+            <td class="{$ca[39]}">{$day_array[39]}</td>
+            <td class="{$ca[40]}">{$day_array[40]}</td>
+            <td class="{$ca[41]}">{$day_array[41]}</td>
+            <td class="{$ca[42]}">{$day_array[42]}</td>
+          </tr>
+        </table>
+    	</div>
+    <div class="ms_bg_end"></div>
+    </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

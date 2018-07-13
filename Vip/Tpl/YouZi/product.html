@@ -1,0 +1,56 @@
+<style type="text/css">
+.STYLE1 {color: #FF0000}
+.STYLE3 {color: #99CC66}
+</style>
+<tagLib name="html" />
+<include file="../Public/header" />
+<div class="sub_bav">
+<table width="100%" cellpadding=0 cellspacing=1 border=0>
+<tr >
+  <td colspan="6" class="tabletd">
+  
+		<form method='post' action="__URL__/product">
+		<div class="fLeft"><span id="key">产品名称：
+		    <input name="title" type="text" id="title" maxlength="200" ></span>
+		    <input type="submit" name="Submit" value="查 询" class="btn1"/>
+		</div>
+		<div  id="searchM" class=" none search cBoth" ></div>
+		</form>  </td>
+</tr>
+<form name="form3" method="post" action="__URL__/productapp">
+
+<tr class="content_td" align="center">
+	<td ><input type="checkbox" name="chkall" value="checkbox" onclick="CheckAll(this.form)"  class="btn2" id="chkall" /></td>
+	<td nowrap >编号</td>
+	<td nowrap >产品名称</td>
+	<td nowrap >产品价格</td>
+	<td nowrap >添加时间</td>
+	<td nowrap >操作</td>
+</tr>
+<volist name="list" id="vo">
+<tr class="content_td" align="center"> 
+	<td><div align="center">
+	  <input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" />
+	</div></td>
+	<td>{$vo.id}</td>
+	<td>{$vo['name']}</td>
+	<td>{$vo['money']}</td>
+	<td>{$vo['create_time']|date='Y-m-d H:i:s',###}</td>
+	<td><a href="__URL__/pro_edit/id/{$vo['id']}">编辑</a> </td>
+</tr>
+</volist>
+<tr class="content_td">
+	<td  colspan=13 >&nbsp; &nbsp;
+    <input name="全选" type="button" class="btn1" id="全选" onclick="CheckAll(this.form)" value="全选" />	  &nbsp;&nbsp;
+	  <input type="submit" name="action" value="添加" class="btn1">&nbsp; &nbsp;
+	  <input type="submit" name="action" value="删除" class="btn1"></td>
+</tr>
+<tr class="content_td" align="center">
+	<td colspan="6">{$page}</td>
+</tr>
+</form>
+</table>
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

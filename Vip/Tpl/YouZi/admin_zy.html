@@ -1,0 +1,49 @@
+<include file="../Public/header" />
+<div id="main_top"><font>您现在的位置是：</font>专营店管理</div>
+<form name="form3" method="post" action="__URL__/admin_zyAC">
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+    <tr class="content_td" align="center">
+        <th nowrap></th>
+        <th nowrap><span>会员编号</span></th>
+        <th nowrap><span>会员名</span></th>
+        <th nowrap><span>申请时间</span></th>
+        <th nowrap><span>确认时间</span></th>
+        <th nowrap><span>状态</span></th>
+    </tr>
+    </thead>
+    <volist name="list" id="vo" key='k'>
+    <tr align="center">
+        <td><input type="checkbox" name="tabledb[]" value="{$vo['id']}" class="btn2" /></td>
+        <td>{$vo['user_id']}&nbsp;</td>
+        <td><span class="STYLE1">{$vo['nickname']}</span>&nbsp;</td>
+        <td>{$vo.zyi_date|date='Y-m-d H:i:s',###}&nbsp;</td>
+        <td><eq name="vo['is_zy']" value="2">{$vo.zyq_date|date='Y-m-d H:i:s',###}</eq>&nbsp;</td>
+        <td><gt name="vo['is_zy']" value="1"><font color="#009900">已确认</font><else /><font color="#FF0000">未确认</font></gt>&nbsp;</td>
+    </tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+<tr>
+    	<td width="50%">&nbsp;&nbsp;
+          <input name="全选" type="button" class="btn1" id="全选" onclick="CheckAll(this.form)" value="全选" />&nbsp;&nbsp;
+          <input type="submit" name="action" value="确认" class="btn1" onclick="{if(confirm('确定吗?')){return true;}return false;}">&nbsp;&nbsp;
+          <input type="submit" name="action" value="删除" class="btn1" onclick="{if(confirm('确定删除吗?')){return true;}return false;}">&nbsp;&nbsp;</td>
+        <td width="50%">{$page}</td>
+    </tr>
+</table>
+</form>
+<table width="600" align="center">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td align="center"><form method='post' action="__URL__/admin_zy/">搜索会员：<input type="text" name="UserID" title="帐号查询">
+    <input type="submit" name="Submit" value="查询"  class="btn1"/>
+    </form></td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
+<script>new TableSorter("tb1");</script>

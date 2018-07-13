@@ -1,0 +1,69 @@
+<include file="../Public/header" />
+<div id="main_top"><font>您现在的位置是：</font> 业绩统计</div>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0">
+	<thead>
+		<tr>
+			<th>{$User_namex}</th>
+			<th>总奖金</th>
+			<th>总提现</th>
+            <th>提现手续</th>
+			<th>电子币充值</th>
+			<th>注册划出</th>
+			<th>货币借出</th>
+			<th>货币借入</th>
+			<th>剩余奖金</th>
+			<th>剩余电子币</th>
+		</tr>
+	</thead>
+	<tr align="center">
+		<td>{$Zong[0]}</td>
+		<td>{$Zong[1]}</td>
+		<td>{$Zong[2]}</td>
+		<td>{$Zong[3]}</td>
+		<td>{$Zong[4]}</td>
+		<td>{$Zong[5]}</td>
+		<td>{$Zong[6]}</td>
+		<td>{$Zong[7]}</td>
+		<td>{$Zong[8]}</td>
+        <td>{$Zong[9]}</td>
+	</tr>
+</table>
+<br>
+<table width="100%" class="tab3" border="0" cellpadding="3" cellspacing="0" id="tb1">
+	<thead>
+		<tr>
+			<th><span>借方{$User_namex}</span></th>
+			<th><span>操作</span></th>
+			<th><span>贷方{$User_namex}</span></th>
+			<th><span>时间</span></th>
+			<th><span>交易额</span></th>
+		</tr>
+	</thead>
+    <volist name='list' id='vo'>
+	<tr align="center">
+		<td>{$vo['user_id']}</td>
+		<td>{$vo['action_type']}</td>
+		<td>{$vo['user_did']}</td>
+		<td>{$vo['pdt']|date='Y-m-d',###}</td>
+		<td>{$vo['epoints']}</td>
+	</tr>
+    </volist>
+</table>
+<table width="100%" class="tab3_bottom" border="0" cellpadding="0" cellspacing="1" bgcolor="#b9c8d0">
+    <tr>
+    	<td width="50%"><form id="form1" name="form1" method="post" action="__URL__/business">{$User_namex}：<input name="UserID" type="text" id="UserID" />
+    	    <select name="type" id="type">
+    	      <option value="0">显示全部</option>
+    	      <option value="1">货币转帐</option>
+    	      <option value="2">货币提现</option>
+              <option value="3">货币充值</option>
+              <option value="4">会员升级</option>
+          </select>
+<input type="submit" name="Submit" value="搜 索" class="btn1" /></form></td>
+        <td width="50%">{$page}</td>
+    </tr>
+</table>
+
+</body>
+</html>
+<script>new TableSorter("tb1");</script>
